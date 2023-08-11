@@ -64,6 +64,9 @@ extern u32 option_frameskip_type;
 extern u32 option_frameskip_value;
 extern u32 option_clock_speed;
 
+extern u32 option_load_backup_id;
+extern u32 option_color_correction;
+
 extern char main_path[MAX_PATH];
 
 extern int date_format;

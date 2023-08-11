@@ -2930,7 +2930,7 @@ static void load_backup_id(void)
   flash_size  = FLASH_SIZE_64KB;
   eeprom_size = EEPROM_512_BYTE;
 
-//  backup_id[0] = 0;
+  backup_id[0] = 0;
 
   for ( ; addr > 0x08000000; addr -= 4)
   {
@@ -2955,10 +2955,10 @@ static void load_backup_id(void)
         if (memcmp(data, "EEPROM_V", 8) == 0)
         {
           backup_type = BACKUP_EEPROM;
-/*
+
           memcpy(backup_id, data, 11);
           backup_id[11] = 0;
-*/
+
           return;
         }
       }
@@ -2971,10 +2971,10 @@ static void load_backup_id(void)
         {
           backup_type = BACKUP_SRAM;
           sram_size   = SRAM_SIZE_32KB;
-/*
+
           memcpy(backup_id, data, 9);
           backup_id[9] = 0;
-*/
+
           return;
         }
 
@@ -2983,10 +2983,10 @@ static void load_backup_id(void)
         {
           backup_type = BACKUP_SRAM;
           sram_size   = SRAM_SIZE_32KB;
-/*
+
           memcpy(backup_id, data, 11);
           backup_id[11] = 0;
-*/
+
           return;
         }
       }
@@ -3001,10 +3001,10 @@ static void load_backup_id(void)
           flash_size  = FLASH_SIZE_64KB;
           flash_device_id = FLASH_DEVICE_PANASONIC_64KB;
           flash_manufacturer_id = FLASH_MANUFACTURER_PANASONIC;
-/*
+
           memcpy(backup_id, data, 10);
           backup_id[10] = 0;
-*/
+
           return;
         }
 
@@ -3015,10 +3015,10 @@ static void load_backup_id(void)
           flash_size  = FLASH_SIZE_64KB;
           flash_device_id = FLASH_DEVICE_PANASONIC_64KB;
           flash_manufacturer_id = FLASH_MANUFACTURER_PANASONIC;
-/*
+
           memcpy(backup_id, data, 13);
           backup_id[13] = 0;
-*/
+
           return;
         }
 
@@ -3029,10 +3029,10 @@ static void load_backup_id(void)
           flash_size  = FLASH_SIZE_128KB;
           flash_device_id = FLASH_DEVICE_SANYO_128KB;
           flash_manufacturer_id = FLASH_MANUFACTURER_SANYO;
-/*
+
           memcpy(backup_id, data, 12);
           backup_id[12] = 0;
-*/
+
           return;
         }
       }
@@ -3094,7 +3094,7 @@ s32 load_backup(char *name)
 
         // Could be either flash or SRAM, go with flash
         case 0x10000:
-          sram_size  = BACKUP_FLASH;
+          backup_type  = BACKUP_FLASH;
           flash_size = FLASH_SIZE_64KB;
           flash_device_id = FLASH_DEVICE_PANASONIC_64KB;
           flash_manufacturer_id = FLASH_MANUFACTURER_PANASONIC;
@@ -3311,8 +3311,8 @@ static s32 load_game_config(char *gamepak_title, char *gamepak_code, char *gamep
               flash_device_id = FLASH_DEVICE_MACRONIX_128KB;
             }
 
-            // DBZLGCYGOKU2 §Œ•◊•Ì•∆•Ø•»ªÿ±‹
-            // EEPROM_V124§«Ãÿ ‚§ ŒÔ(¨F‘⁄≈–Ñe≤ªø…) §«÷∏∂®§π§Ï§–Ñ”◊˜ø…
+            // DBZLGCYGOKU2 „ÅÆ„Éó„É≠„ÉÜ„ÇØ„ÉàÂõûÈÅø
+            // EEPROM_V124„ÅßÁâπÊÆä„Å™Áâ©(ÁèæÂú®Âà§Âà•‰∏çÂèØ) „ÅßÊåáÂÆö„Åô„Çå„Å∞Âãï‰ΩúÂèØ
             if (!strcasecmp(current_variable, "save_type"))
             {
               if (!strcasecmp(current_value, "sram"))
@@ -3405,17 +3405,11 @@ s32 load_gamepak(char *name)
 
   draw_box_alpha(110, 50, 370, 220, 0xBF000000);
   draw_box_line(120, 60, 360, 210, COLOR15_WHITE);
-  if (option_language == 0)
-	print_string(MSG[MSG_LOADING_ROM], X_POS_CENTER, 100, COLOR15_WHITE, BG_NO_FILL);
-  else
-	print_string_gbk(MSG[MSG_LOADING_ROM], X_POS_CENTER, 100, COLOR15_WHITE, BG_NO_FILL);
+  print_string(MSG[MSG_LOADING_ROM], X_POS_CENTER, 100, COLOR15_WHITE, BG_NO_FILL);
   flip_screen(1);
   draw_box_alpha(110, 50, 370, 220, 0xBF000000);
   draw_box_line(120, 60, 360, 210, COLOR15_WHITE);
-  if (option_language == 0)
-	print_string(MSG[MSG_LOADING_ROM], X_POS_CENTER, 100, COLOR15_WHITE, BG_NO_FILL);
-  else
-	print_string_gbk(MSG[MSG_LOADING_ROM], X_POS_CENTER, 100, COLOR15_WHITE, BG_NO_FILL);
+  print_string(MSG[MSG_LOADING_ROM], X_POS_CENTER, 100, COLOR15_WHITE, BG_NO_FILL);
 
   scePowerLock(0);
   set_cpu_clock(PSP_CLOCK_333);
@@ -3429,10 +3423,7 @@ s32 load_gamepak(char *name)
   if (!strcasecmp(dot_position, ".gba") || !strcasecmp(dot_position, ".agb") || !strcasecmp(dot_position, ".bin"))
   {
     file_size = load_gamepak_raw(name);
-	if (option_language == 0)
-		print_string(MSG[MSG_SEARCHING_BACKUP_ID], X_POS_CENTER, 148, COLOR15_WHITE, BG_NO_FILL);
-    else
-		print_string_gbk(MSG[MSG_SEARCHING_BACKUP_ID], X_POS_CENTER, 148, COLOR15_WHITE, BG_NO_FILL);
+    print_string(MSG[MSG_SEARCHING_BACKUP_ID], X_POS_CENTER, 148, COLOR15_WHITE, BG_NO_FILL);
     flip_screen(1);
   }
 
@@ -3456,11 +3447,13 @@ s32 load_gamepak(char *name)
     game_title[12] = 0;
     game_code[4] = 0;
     maker_code[2] = 0;
-	//load_backup_id();//up order to fix no game_code
+    //load_backup_id();//up order to fix no game_code
     load_game_config(game_title, game_code, maker_code);
     load_game_config_file();
 
-	load_backup_id();
+    if (option_load_backup_id != 0)
+      load_backup_id();
+
     change_ext(gamepak_filename, backup_filename, ".sav");
     load_backup(backup_filename);
 

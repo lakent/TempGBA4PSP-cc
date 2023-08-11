@@ -10,262 +10,262 @@
     "ROM Buffer %2dMB",
 
     // MSG_BROWSER_HELP
-    "○:Select  ×:Menu  □:" FONT_UP_DIRECTORY_GBK,
+    "○:選択  ×:メニュー  □:" FONT_UP_DIRECTORY,
 
     // MSG_MENU_DATE_FMT_0
-    "%4d/%2d/%2d %-3s %2d:%02d",
+    "%4d/%2d/%2d %-4s %2d:%02d",
 
     // MSG_MENU_DATE_FMT_1
-    "%2d/%2d/%4d %-3s %2d:%02d",
+    "%2d/%2d/%4d %-4s %2d:%02d",
 
     // MSG_MAIN_MENU_TITLE
-    "Menu",
+    "メニュー",
 
     // MSG_MAIN_MENU_0
-    "Load state : SLOT %d",
+    "ロードステート : スロット %d",
 
     // MSG_MAIN_MENU_1
-    "Save state : SLOT %d",
+    "セーブステート : スロット %d",
 
     // MSG_MAIN_MENU_2
-    "Savestate details " FONT_R_TRIGGER_GBK,
+    "ステートセーブ拡張 " FONT_R_TRIGGER,
 
     // MSG_MAIN_MENU_3
-    "Screen capture : %s",
+    "スクリーン ショット: %s",
 
     // MSG_MAIN_MENU_4
-    "Emulator options",
+    "エミュレータの設定",
 
     // MSG_MAIN_MENU_5
-    "Gamepad config",
+    "ゲームパッドの設定",
 
     // MSG_MAIN_MENU_6
-    "Analog stick config",
+    "アナログスティックの設定",
 
     //MSG_MAIN_MENU_CHEAT
-    "Cheats options",
+    "チートメニュー",
 
     // MSG_MAIN_MENU_7
-    "Load game " FONT_L_TRIGGER_GBK,
+    "ゲームのロード " FONT_L_TRIGGER,
 
     // MSG_MAIN_MENU_8
-    "Reset",
+    "リセット",
 
     // MSG_MAIN_MENU_9
-    "Return to game",
+    "ゲームに戻る",
 
     // MSG_MAIN_MENU_10
-    "Sleep",
+    "スリープ",
 
     // MSG_MAIN_MENU_11
-    "Exit TempGBA",
+    "TempGBAの終了",
 
     // MSG_MAIN_MENU_HELP_0
-    "○:Load  " FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select slot",
+    "○:ロード  " FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":スロット選択",
 
     // MSG_MAIN_MENU_HELP_1
-    "○:Save  " FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select slot",
+    "○:セーブ  " FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":スロット選択",
 
     // MSG_MAIN_MENU_HELP_2
-    "○:Sub menu  " FONT_R_TRIGGER_GBK ":Shortcut key",
+    "○:サブメニュー  " FONT_R_TRIGGER ":ショートカット",
 
     // MSG_MAIN_MENU_HELP_3
-    "○:Save Image  " FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select image format",
+    "○:イメージ保存  " FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":フォーマット選択",
 
     // MSG_MAIN_MENU_HELP_4
-    "○:Sub menu",
+    "○:サブメニュー",
 
     // MSG_MAIN_MENU_HELP_5
-    "○:Sub menu",
+    "○:サブメニュー",
 
     // MSG_MAIN_MENU_HELP_6
-    "○:Sub menu",
+    "○:サブメニュー",
 
     // MSG_MAIN_MENU_HELP_CHEAT
-    "○:Select to manage cheats",
+    "○:チートを変更します",
 
     // MSG_MAIN_MENU_HELP_7
-    "○:File browser  " FONT_L_TRIGGER_GBK ":Shortcut key",
+    "○:ファイルブラウザ  " FONT_L_TRIGGER ":ショートカット",
 
     // MSG_MAIN_MENU_HELP_8
-    "○:Reset game",
+    "○:ゲームをリセット",
 
     // MSG_MAIN_MENU_HELP_9
-    "○:Return to game",
+    "○:ゲームに戻る",
 
     // MSG_MAIN_MENU_HELP_10
-    "○:Sleep mode",
+    "○:スリープ モード",
 
     // MSG_MAIN_MENU_HELP_11
-    "○:Exit",
+    "○:終了",
 
     // MSG_OPTION_MENU_TITLE
-    "Emulator options",
+    "エミュレータの設定",
 
     // MSG_OPTION_MENU_0
-    "Display mode    : %s",
+    "画面表示　　　　　: %s",
 
     // MSG_OPTION_MENU_1
-    "Magnification   : %d%%",
+    "画面の拡大率　　　: %d%%",
 
     // MSG_OPTION_MENU_2
-    "Bilinear filter : %s",
+    "画面のフィルタ　　: %s",
 
     // MSG_OPTION_MENU_SHOW_FPS
-    "Show FPS        : %s",
+    "FPS表示 　　　　　: %s",
 
     // MSG_OPTION_MENU_3
-    "Frameskip type  : %s",
+    "フレームスキップ　: %s",
 
     // MSG_OPTION_MENU_4
-    "Frameskip value : %d",
+    "スキップの値　　　: %d",
 
     // MSG_OPTION_MENU_5
-    "CPU clock freq  : %s",
+    "動作クロック　　　: %s",
 
     // MSG_OPTION_MENU_6
-    "Sound volume    : %s",
+    "サウンド音量　　　: %s",
 
     // MSG_OPTION_MENU_7
-    "Stack optimize  : %s",
+    "スタックの最適化　: %s",
 
     // MSG_OPTION_MENU_8
-    "Boot from BIOS  : %s",
+    "BIOSから起動を行う: %s",
 
     // MSG_OPTION_MENU_9
-    "Update backup   : %s",
+    "バックアップの更新: %s",
 
     // MSG_OPTION_MENU_10
-    "Language        : %s",
-
-    // MSG_OPTION_MENU_DEFAULT
-    "Restore",
-
-    // MSG_OPTION_MENU_11
-    "Back",
-
-    // MSG_OPTION_MENU_12
-    "Color correction: %s",
-
-    // MSG_OPTION_MENU_13
-    "Load backup ID  : %s",
-
-    // MSG_OPTION_MENU_HELP_0
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
-
-    // MSG_OPTION_MENU_HELP_1
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
-
-    // MSG_OPTION_MENU_HELP_2
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
-
-    // MSG_OPTION_MENU_HELP_SHOW_FPS
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
-
-    // MSG_OPTION_MENU_HELP_3
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
-
-    // MSG_OPTION_MENU_HELP_4
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
-
-    // MSG_OPTION_MENU_HELP_5
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
-
-    // MSG_OPTION_MENU_HELP_6
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
-
-    // MSG_OPTION_MENU_HELP_7
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
-
-    // MSG_OPTION_MENU_HELP_8
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
-
-    // MSG_OPTION_MENU_HELP_9
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
-
-    // MSG_OPTION_MENU_HELP_10
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
+    "言語　　　　　　　: %s",
 
     // MSG_OPTION_MENU_HELP_DEFAULT
-    "○:Restore default settings",
+    "設定の初期化",
+
+    // MSG_OPTION_MENU_11
+    "戻る",
+
+    // MSG_OPTION_MENU_12
+    "画面の色補正      : %s",
+
+    // MSG_OPTION_MENU_13
+    "バックアップの種類: %s",
+
+    // MSG_OPTION_MENU_HELP_0
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   共通",
+
+    // MSG_OPTION_MENU_HELP_1
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   共通",
+
+    // MSG_OPTION_MENU_HELP_2
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   共通",
+
+    // MSG_OPTION_MENU_HELP_SHOW_FPS
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   エミュレータ",
+
+    // MSG_OPTION_MENU_HELP_3
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   共通",
+
+    // MSG_OPTION_MENU_HELP_4
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   共通",
+
+    // MSG_OPTION_MENU_HELP_5
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   共通",
+
+    // MSG_OPTION_MENU_HELP_6
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   共通",
+
+    // MSG_OPTION_MENU_HELP_7
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   エミュレータ",
+
+    // MSG_OPTION_MENU_HELP_8
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   エミュレータ",
+
+    // MSG_OPTION_MENU_HELP_9
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   エミュレータ",
+
+    // MSG_OPTION_MENU_HELP_10
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   エミュレータ",
+
+    // MSG_OPTION_MENU_DEFAULT
+    "○:初期化",
 
     // MSG_OPTION_MENU_HELP_11
-    "○:Main menu",
+    "○:メインメニュー",
 
     // MSG_OPTION_MENU_HELP_12
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   共通",
 
     // MSG_OPTION_MENU_HELP_13
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   共通",
 
     // MSG_STATE_MENU_DATE_FMT_0
-    "%4d/%2d/%2d %-3s %2d:%02d:%02d",
+    "%4d/%2d/%2d %-4s %2d:%02d:%02d",
 
     // MSG_STATE_MENU_DATE_FMT_1
-    "%2d/%2d/%4d %-3s %2d:%02d:%02d",
+    "%2d/%2d/%4d %-4s %2d:%02d:%02d",
 
     // MSG_STATE_MENU_DATE_NONE_0
-    "----/--/-- --- --:--:--",
+    "----/--/-- ---- --:--:--",
 
     // MSG_STATE_MENU_DATE_NONE_1
-    "--/--/---- --- --:--:--",
+    "--/--/---- ---- --:--:--",
 
     // MSG_STATE_MENU_STATE_NONE
-    "No data in this slot",
+    "このスロットにデータはありません",
 
     // MSG_STATE_MENU_TITLE
-    "Savestate",
+    "ステートセーブ",
 
     // MSG_STATE_MENU_0
     "",
 
     // MSG_STATE_MENU_1
-    "Load state from file",
+    "ファイルからステートをロード",
 
     // MSG_STATE_MENU_2
-    "Back",
+    "戻る",
 
     // MSG_STATE_MENU_HELP_0
-    "○:Execute  " FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select",
+    "○:実行  " FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択",
 
     // MSG_STATE_MENU_HELP_1
-    "○:File browser",
+    "○:ファイルブラウザ",
 
     // MSG_STATE_MENU_HELP_2
-    "○:Main menu",
+    "○:メインメニュー",
 
     // MSG_PAD_MENU_TITLE
-    "Gamepad config",
+    "ゲームパッドの設定",
 
     // MSG_PAD_MENU_0
-    "↑     : %s",
+    "↑　　 : %s",
 
     // MSG_PAD_MENU_1
-    "↓     : %s",
+    "↓　　 : %s",
 
     // MSG_PAD_MENU_2
-    "←     : %s",
+    "←　　 : %s",
 
     // MSG_PAD_MENU_3
-    "→     : %s",
+    "→　　 : %s",
 
     // MSG_PAD_MENU_4
-    "○     : %s",
+    "○　　 : %s",
 
     // MSG_PAD_MENU_5
-    "×     : %s",
+    "×　　 : %s",
 
     // MSG_PAD_MENU_6
-    "□     : %s",
+    "□　　 : %s",
 
     // MSG_PAD_MENU_7
-    "△     : %s",
+    "△　　 : %s",
 
     // MSG_PAD_MENU_8
-    FONT_L_TRIGGER_GBK "     : %s",
+    FONT_L_TRIGGER "　　 : %s",
 
     // MSG_PAD_MENU_9
-    FONT_R_TRIGGER_GBK "     : %s",
+    FONT_R_TRIGGER "　　 : %s",
 
     // MSG_PAD_MENU_10
     "START  : %s",
@@ -274,13 +274,13 @@
     "SELECT : %s",
 
     // MSG_PAD_MENU_12
-    "Back",
+    "戻る",
 
     // MSG_PAD_MENU_HELP_0
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select",
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択",
 
     // MSG_PAD_MENU_HELP_1
-    "○:Main menu",
+    "○:メインメニュー",
 
     //PADの設定 コンフィグ
 
@@ -309,160 +309,160 @@
     "R",
 
     // MSG_PAD_MENU_CFG_8
-    "START",
+    "スタート",
 
     // MSG_PAD_MENU_CFG_9
-    "SELECT",
+    "セレクト",
 
     // MSG_PAD_MENU_CFG_10
-    "menu",
+    "メニュー",
 
     // MSG_PAD_MENU_CFG_11
-    "fast forward",
+    "ターボ",
 
     // MSG_PAD_MENU_CFG_12
-    "load state",
+    "ステートロード",
 
     // MSG_PAD_MENU_CFG_13
-    "save state",
+    "ステートセーブ",
 
     // MSG_PAD_MENU_CFG_14
-    "RAPID FIRE A",
+    "A連射",
 
     // MSG_PAD_MENU_CFG_15
-    "RAPID FIRE B",
+    "B連射",
 
     // MSG_PAD_MENU_CFG_16
-    "RAPID FIRE L",
+    "L連射",
 
     // MSG_PAD_MENU_CFG_17
-    "RAPID FIRE R",
+    "R連射",
 
     // MSG_PAD_MENU_CFG_18
-    "show fps",
+    "フレームレート表示",
 
     // MSG_PAD_MENU_CFG_19
-    "none",
+    "なし",
 
     // MSG_A_PAD_MENU_TITLE
-    "Analog stick config",
+    "アナログスティックの設定",
 
     // MSG_A_PAD_MENU_0
-    "Analog ↑ : %s",
+    "アナログ ↑ : %s",
 
     // MSG_A_PAD_MENU_1
-    "Analog ↓ : %s",
+    "アナログ ↓ : %s",
 
     // MSG_A_PAD_MENU_2
-    "Analog ← : %s",
+    "アナログ ← : %s",
 
     // MSG_A_PAD_MENU_3
-    "Analog → : %s",
+    "アナログ → : %s",
 
     // MSG_A_PAD_MENU_4
-    "Enable analog input : %s",
+    "アナログ入力を有効: %s",
 
     // MSG_A_PAD_MENU_5
-    "Analog sensitivity  : %d",
+    "アナログ入力の感度: %d",
 
     // MSG_A_PAD_MENU_6
-    "Back",
+    "戻る",
 
     // MSG_A_PAD_MENU_HELP_0
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select",
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択",
 
     // MSG_A_PAD_MENU_HELP_1
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select",
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択",
 
     // MSG_A_PAD_MENU_HELP_2
-    "○:Main menu",
+    "○:メインメニュー",
 
     //MSG_CHEAT_MENU_TITLE,
-    "Cheats options",
+    "チートメニュー",
 
     //MSG_CHEAT_MENU_NON_LOAD,
-    "(no) %2d: ------------------------",
+    "(無) %2d: ------------------------",
 
     //MSG_CHEAT_MENU_0,
     "%%s %2d: %s",
 
     //MSG_CHEAT_MENU_1,
-    "Load Cheat File  " FONT_L_TRIGGER_GBK,
+    "チートファイルのロード  " FONT_L_TRIGGER,
 
     //MSG_CHEAT_MENU_2,
-    "Back",
+    "戻る",
 
     //MSG_CHEAT_MENU_3,
-    "cheat page: %d",
+    "チートページ: %d",
 
     //MSG_CHEAT_MENU_HELP_0,
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Activate/deactivate",
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択したコードの有効／無効の切替",
 
     //MSG_CHEAT_MENU_HELP_1,
-    "○:Cheat file browser  "FONT_L_TRIGGER_GBK ":Shortcut key",
+    "○:チートファイルをロードします  " FONT_L_TRIGGER ":ショートカット",
 
     //MSG_CHEAT_MENU_HELP_2,
-    "○:Main menu",
+    "○:メインメニューに戻ります",
 
     //MSG_CHEAT_MENU_HELP_3,
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Change page",
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":ページを変更",
 
     // MSG_NON_LOAD_GAME
-    "Game is not loaded",
+    "ゲームはロードされていません",
 
     // MSG_DAYW_0
-    "SUN",
+    "(日)",
 
     // MSG_DAYW_1
-    "MON",
+    "(月)",
 
     // MSG_DAYW_2
-    "TUE",
+    "(火)",
 
     // MSG_DAYW_3
-    "WED",
+    "(水)",
 
     // MSG_DAYW_4
-    "THU",
+    "(木)",
 
     // MSG_DAYW_5
-    "FRI",
+    "(金)",
 
     // MSG_DAYW_6
-    "SAT",
+    "(土)",
 
     // MSG_YES
-    "YES",
+    "はい",
 
     // MSG_NO
-    "NO",
+    "いいえ",
 
     // MSG_ON
-    "ON",
+    "オン",
 
     // MSG_OFF
-    "OFF",
+    "オフ",
 
     // MSG_ENABLED
-    "ON  ",
+    "有効",
 
     // MSG_DISABLED
-    "OFF ",
+    "無効",
 
     // MSG_AUTO
-    "AUTO",
+    "自動",
 
     // MSG_MANUAL
-    "MANUAL",
+    "手動",
 
     // MSG_EXITONLY
-    "Exit Only",
+    "終了時のみ",
 
     // MSG_LOAD
-    "LOAD",
+    "ロード",
 
     // MSG_SAVE
-    "SAVE",
+    "セーブ",
 
     // MSG_SCN_SCALED_NONE
     "100% GU",
@@ -474,7 +474,7 @@
     "150% SW",
 
     // MSG_SCN_SCALED_USER
-    "USER GU",
+    "指定 GU",
 
     // MSG_SS_DATE_FMT_0
     "%04d_%02d_%02d_%s%02d_%02d_%02d_%03d",
@@ -483,62 +483,62 @@
     "%02d_%02d_%04d_%s%02d_%02d_%02d_%03d",
 
     // MSG_ERR_SET_DIR_0
-    "ERROR [%s] Specified directory is invalid.",
+    "エラー [%s] 指定されたディレクトリは無効です。",
 
     // MSG_ERR_SET_DIR_1
-    "ERROR [%s] Not specified.",
+    "エラー [%s] 指定がありません。",
 
     // MSG_ERR_SET_DIR_2
-    "The error occurred. It's set as the following directories.\n%s",
+    "エラーの発生した項目は、以下のディレクトリに設定します。\n%s",
 
     // png.c
     // MSG_ERR_SS_PNG_0
-    "Could not allocate memory for PNG.",
+    "メモリの確保が出来ませんでした。",
 
     // MSG_ERR_SS_PNG_1
-    "Could not enecode PNG image.",
+    "PNGイメージの作成が出来ませんでした。",
 
     // memory.c
     // MSG_LOADING_ROM
-    "Now Loading...",
+    "ロード中...",
 
     // MSG_SEARCHING_BACKUP_ID
-    "Searching BACKUP ID",
+    "BACKUP ID を検索中",
 
     // main.c
     // MSG_GBA_SLEEP_MODE
-    "SLEEP MODE",
+    "スリープ モード",
 
     // MSG_ERR_LOAD_DIR_INI
-    "Could not load dir.ini file.\nEverything is set as the following directory.\n%s",
+    "dir.iniがロード出来ません。すべてを以下のディレクトリに設定します。\n%s",
 
     // MSG_ERR_BIOS_NONE
-    "Could not load BIOS image file.",
+    "BIOSファイルがロード出来ません。",
 
     // MSG_ERR_LOAD_GAMEPACK
-    "Could not load the game file.",
+    "ゲームファイルがロード出来ません。",
 
     // MSG_ERR_OPEN_GAMEPACK
-    "Could not open the game file.",
+    "ゲームファイルが読めません。",
 
     // MSG_ERR_START_CALLBACK_THREAD
-    "Could not start the callback thread.",
+    "コールバックスレッドを開始出来ません。",
 
     // sound.c
     // MSG_ERR_RESERVE_AUDIO_CHANNEL
-    "Could not reserve audio channel.",
+    "オーディオチャンネルを確保出来ません。",
 
-    // MSG_ERR_START_SOUND_THREAD
-    "Could not start the sound thread.",
+    // MSG_ERR_START_SOUND_THEREAD
+    "サウンドスレッドを開始出来ません。",
 
     // MSG_ERR_MALLOC
-    "Could not allocate memory.",
+    "メモリの確保が出来ません。",
 
     // MSG_ERR_CONT
-    "Press any button to continue.",
+    "何かボタンを押してください。",
 
     // MSG_ERR_QUIT
-    "Press any button to exit.",
+    "何かボタンを押すと終了します。",
 
     // MSG_BLANK
     ""

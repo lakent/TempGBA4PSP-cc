@@ -192,7 +192,7 @@ extern u8 fetch_waitstate_s[2][16];
 extern u8 *memory_map_read[8 * 1024];
 extern u8 *memory_map_write[8 * 1024];
 
-// extern char backup_id[16];
+extern char backup_id[16];
 
 
 u8  read_memory8(u32 address);

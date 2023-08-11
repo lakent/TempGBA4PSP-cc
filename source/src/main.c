@@ -48,6 +48,9 @@ u32 option_frameskip_type = FRAMESKIP_AUTO;
 u32 option_frameskip_value = 9;
 u32 option_clock_speed = PSP_CLOCK_333;
 
+u32 option_load_backup_id = 0;
+u32 option_color_correction = 0;
+
 char main_path[MAX_PATH];
 
 int date_format = 0;
@@ -536,10 +539,7 @@ static void synchronize(void)
     if (reg[CPU_HALT_STATE] == CPU_STOP)
     {
       clear_screen(0);
-	  if (option_language == 0)
       print_string(MSG[MSG_GBA_SLEEP_MODE], X_POS_CENTER, 130, COLOR15_WHITE, BG_NO_FILL);
-	  else
-      print_string_gbk(MSG[MSG_GBA_SLEEP_MODE], X_POS_CENTER, 130, COLOR15_WHITE, BG_NO_FILL);
     }
 
     // PSP controller - hold
@@ -559,19 +559,13 @@ static void synchronize(void)
   if (!synchronize_flag)
   {
     if (psp_fps_debug != 0)
-	{
-		if (option_language == 0)
-			print_string(MSG[MSG_TURBO], 0, 12, COLOR15_WHITE, COLOR15_BLACK);
-		else
-			print_string_gbk(MSG[MSG_TURBO], 0, 12, COLOR15_WHITE, COLOR15_BLACK);
-	}
-	else
-	{
-		if (option_language == 0)
-		print_string(MSG[MSG_TURBO], 0, 0, COLOR15_WHITE, COLOR15_BLACK);
-		else
-		print_string_gbk(MSG[MSG_TURBO], 0, 0, COLOR15_WHITE, COLOR15_BLACK);
-	}
+    {
+      print_string(MSG[MSG_TURBO], 0, 12, COLOR15_WHITE, COLOR15_BLACK);
+    }
+    else
+    {
+      print_string(MSG[MSG_TURBO], 0, 0, COLOR15_WHITE, COLOR15_BLACK);
+    }
     used_frameskip_type = FRAMESKIP_MANUAL;
     used_frameskip_value = 4;
   }
@@ -1017,10 +1011,7 @@ void error_msg(const char *text, u8 confirm)
       sprintf(text_buff, "%s\n\n%s", text, MSG[MSG_ERR_QUIT]);
       break;
   }
-  if (option_language == 0)
   print_string(text_buff, 6, 6, COLOR15_WHITE, COLOR15_BLACK);
-  else
-  print_string_gbk(text_buff, 6, 6, COLOR15_WHITE, COLOR15_BLACK);
   flip_screen(1);
 
   while (gui_action == CURSOR_NONE)

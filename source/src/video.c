@@ -19,6 +19,7 @@
  */
 
 #include "common.h"
+#include "gba_cc_lut.h"
 #include "volume_icon.c"
 
 
@@ -101,6 +102,7 @@ const u8 ALIGN_DATA active_layers[8] =
 
 static void set_gba_resolution(void);
 static void generate_display_list(float mag);
+static void cc_screen_texture(void);
 static void bitbilt_gu(void);
 static void bitbilt_sw(void);
 
@@ -3307,8 +3309,40 @@ static void generate_display_list(float mag)
   sceGuFinish();
 }
 
+#define LOOKUP_CC_LUT(c)     gba_cc_lut[(c)]
+
+static void cc_screen_texture(void)
+{
+  u32 x, y;
+  u16 *p_src, *p_src0;
+
+  p_src0 = screen_texture;
+
+  for (y = 0; y < GBA_SCREEN_HEIGHT; y++)
+  {
+    p_src = p_src0;
+
+    for (x = 0; x < GBA_SCREEN_WIDTH; x += 8, p_src += 8)
+    {
+      p_src[0] = LOOKUP_CC_LUT(p_src[0]);
+      p_src[1] = LOOKUP_CC_LUT(p_src[1]);
+      p_src[2] = LOOKUP_CC_LUT(p_src[2]);
+      p_src[3] = LOOKUP_CC_LUT(p_src[3]);
+      p_src[4] = LOOKUP_CC_LUT(p_src[4]);
+      p_src[5] = LOOKUP_CC_LUT(p_src[5]);
+      p_src[6] = LOOKUP_CC_LUT(p_src[6]);
+      p_src[7] = LOOKUP_CC_LUT(p_src[7]);
+    }
+
+    p_src0 += GBA_LINE_SIZE;
+  }
+}
+
 static void bitbilt_gu(void)
 {
+  if (option_color_correction != 0)
+    cc_screen_texture();
+
   sceKernelDcacheWritebackAll();
 
   sceGuStart(GU_DIRECT, display_list);
@@ -3319,8 +3353,51 @@ static void bitbilt_gu(void)
   sceGuSync(0, GU_SYNC_FINISH);
 }
 
-
 #define NORMAL_BLEND(c0, c1) ((c0 & c1) + (((c0 ^ c1) & 0x7bde) >> 1))
+
+static void bitbilt_sw_cc(void)
+{
+  u32 x, y;
+  u16 *vptr, *vptr0;
+  u16 *d, *d0;
+
+  vptr0 = (u16 *)psp_vram_addr(draw_frame, 60, 16);
+  d0 = screen_texture;
+
+  for (y = 0; y < (GBA_SCREEN_HEIGHT / 2); y++)
+  {
+    vptr = vptr0;
+    d = d0;
+
+    for (x = 0; x < (GBA_SCREEN_WIDTH / 2); x++, d += 2)
+    {
+      u16 d_0_0 = LOOKUP_CC_LUT(d[0]);
+      u16 d_0_1 = LOOKUP_CC_LUT(d[1]);
+      u16 d_1_0 = LOOKUP_CC_LUT(d[0 + GBA_LINE_SIZE]);
+      u16 d_1_1 = LOOKUP_CC_LUT(d[1 + GBA_LINE_SIZE]);
+
+      vptr[0] = d_0_0;
+      vptr[2] = d_0_1;
+
+      vptr[0 + PSP_LINE_SIZE * 2] = d_1_0;
+      vptr[2 + PSP_LINE_SIZE * 2] = d_1_1;
+
+      *++vptr = NORMAL_BLEND(d_0_0, d_0_1);
+      vptr += (PSP_LINE_SIZE - 1);
+
+      *vptr++ = NORMAL_BLEND(d_0_0, d_1_0);
+      *vptr++ = NORMAL_BLEND(NORMAL_BLEND(d_0_0, d_1_0), NORMAL_BLEND(d_0_1, d_1_1));
+      *vptr   = NORMAL_BLEND(d_0_1, d_1_1);
+      vptr += (PSP_LINE_SIZE - 1);
+
+      *vptr   = NORMAL_BLEND(d_1_0, d_1_1);
+      vptr += (2 - PSP_LINE_SIZE * 2);
+    }
+
+    vptr0 += (PSP_LINE_SIZE * 3);
+    d0 += (GBA_LINE_SIZE * 2);
+  }
+}
 
 static void bitbilt_sw(void)
 {
@@ -3336,6 +3413,11 @@ static void bitbilt_sw(void)
 
   sceGuFinish();
   sceGuSync(0, GU_SYNC_FINISH);
+
+  if (option_color_correction != 0) {
+    bitbilt_sw_cc();
+    return;
+  }
 
   vptr0 = (u16 *)psp_vram_addr(draw_frame, 60, 16);
   d0 = screen_texture;
@@ -3446,14 +3528,18 @@ void clear_texture(u16 color)
 }
 
 
-u16 *copy_screen(void)
+u16 *copy_screen(u16 *buff)
 {
   u32 x, y;
   u16 *copy;
   u16 *p_src, *p_src0;
   u16 *p_dest;
 
-  copy = (u16 *)safe_malloc(GBA_SCREEN_SIZE);
+  if (buff == NULL) {
+    copy = (u16 *)safe_malloc(GBA_SCREEN_SIZE);
+  } else {
+    copy = buff;
+  }
 
   p_src0 = screen_texture;
   p_dest = copy;
@@ -3462,8 +3548,13 @@ u16 *copy_screen(void)
   {
     p_src = p_src0;
 
-    for (x = 0; x < GBA_SCREEN_WIDTH; x++, p_src++, p_dest++)
-      *p_dest = *p_src;
+    if (option_color_correction != 0) {
+      for (x = 0; x < GBA_SCREEN_WIDTH; x++, p_src++, p_dest++)
+        *p_dest = LOOKUP_CC_LUT(*p_src);
+    } else {
+      for (x = 0; x < GBA_SCREEN_WIDTH; x++, p_src++, p_dest++)
+        *p_dest = *p_src;
+    }
 
     p_src0 += GBA_LINE_SIZE;
   }
@@ -3681,37 +3772,22 @@ void print_string(const char *str, s16 x, u16 y, u16 fg_color, s16 bg_color)
 {
   if (x < 0) x = (PSP_SCREEN_WIDTH - (strlen(str) * FONTWIDTH)) >> 1;
 
-  mh_print(str, x, y, fg_color, bg_color, (u16 *)((u32)draw_frame | 0x44000000), PSP_LINE_SIZE);
+  ch_print(str, x, y, fg_color, bg_color, (u16 *)((u32)draw_frame | 0x44000000), PSP_LINE_SIZE);
 }
 
 void print_string_ext(const char *str, s16 x, u16 y, u16 fg_color, s16 bg_color, void *_dest_ptr, u16 pitch)
 {
   if (x < 0) x = (pitch - (strlen(str) * FONTWIDTH)) >> 1;
 
-  mh_print(str, x, y, fg_color, bg_color, _dest_ptr, pitch);
-}
-
-void print_string_gbk(const char *str, s16 x, u16 y, u16 fg_color, s16 bg_color)
-{
-  if (x < 0) x = (PSP_SCREEN_WIDTH - (strlen(str) * FONTWIDTH)) >> 1;
-
-  ch_print(str, x, y, fg_color, bg_color, (u16 *)((u32)draw_frame | 0x44000000), PSP_LINE_SIZE);
-}
-
-void print_string_ext_gbk(const char *str, s16 x, u16 y, u16 fg_color, s16 bg_color, void *_dest_ptr, u16 pitch)
-{
-  if (x < 0) x = (pitch - (strlen(str) * FONTWIDTH)) >> 1;
-
   ch_print(str, x, y, fg_color, bg_color, _dest_ptr, pitch);
 }
-
 
 /******************************************************************************/
 /* copy from njemu */
 /******************************************************************************/
 
 /******************************************************************************
-  メインボリューム表示
+  繝｡繧､繝ｳ繝懊Μ繝･繝ｼ繝陦ｨ遉ｺ
 ******************************************************************************/
 
 static void load_volume_icon(int devkit_version)
@@ -3816,7 +3892,7 @@ static void load_volume_icon(int devkit_version)
 }
 
 /*------------------------------------------------------
-  ボリュームを描画 (CFW 3.52以降のユーザーモードのみ)
+  繝懊Μ繝･繝ｼ繝繧呈緒逕ｻ (CFW 3.52莉･髯阪�ｮ繝ｦ繝ｼ繧ｶ繝ｼ繝｢繝ｼ繝峨�ｮ縺ｿ)
 ------------------------------------------------------*/
 
 static void draw_volume(int volume)
@@ -3936,7 +4012,7 @@ static void draw_volume(int volume)
 }
 
 /*------------------------------------------------------
-  メインボリューム表示
+  繝｡繧､繝ｳ繝懊Μ繝･繝ｼ繝陦ｨ遉ｺ
 ------------------------------------------------------*/
 
 int draw_volume_status(int draw)

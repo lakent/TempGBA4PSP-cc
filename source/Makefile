@@ -15,19 +15,19 @@ PSP_FW_VERSION = 371
 PSP_LARGE_MEMORY = 1
 
 PSP_EBOOT_ICON = res/ICON0.png
-PSP_EBOOT_TITLE = TempGBA mod
+PSP_EBOOT_TITLE = TempGBA cc
 
 EXTRA_TARGETS = EBOOT.PBP
 
 COMMON_FILE = \
  common.h \
- cpu.h memory.h video.h input.h sound.h main.h message.h mh_print.h gui.h zip.h png.h \
- ku_bridge.h exception.h ch_print.h
+ cpu.h memory.h video.h input.h sound.h main.h message.h gui.h zip.h png.h \
+ ku_bridge.h exception.h ch_print.h gba_cc_lut.h
 
 MAINOBJS = \
- cpu.o memory.o video.o input.o sound.o main.o message.o mh_print.o gui.o zip.o png.o \
+ cpu.o memory.o video.o input.o sound.o main.o message.o gui.o zip.o png.o \
  mips_stub.o \
- ku_bridge.o exception.o cheats.o ch_print.o
+ ku_bridge.o exception.o cheats.o ch_print.o gba_cc_lut.o
 
 OBJZ = adler32.o crc32.o deflate.o infback.o inffast.o inflate.o inftrees.o trees.o zutil.o
 OBJG = compress.o uncompr.o gzclose.o gzlib.o gzread.o gzwrite.o

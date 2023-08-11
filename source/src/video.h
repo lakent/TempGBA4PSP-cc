@@ -80,14 +80,11 @@ void video_term(void);
 void print_string(const char *str, s16 x, u16 y, u16 fg_color, s16 bg_color);
 void print_string_ext(const char *str, s16 x, u16 y, u16 fg_color, s16 bg_color, void *_dest_ptr, u16 pitch);
 
-void print_string_gbk(const char *str, s16 x, u16 y, u16 fg_color, s16 bg_color);
-void print_string_ext_gbk(const char *str, s16 x, u16 y, u16 fg_color, s16 bg_color, void *_dest_ptr, u16 pitch);
-
 void clear_screen(u32 color);
 void clear_texture(u16 color);
 
 void blit_to_screen(u16 *src, u16 w, u16 h, u16 dest_x, u16 dest_y);
-u16 *copy_screen(void);
+u16 *copy_screen(u16 *buff);
 
 extern s32 affine_reference_x[2];
 extern s32 affine_reference_y[2];

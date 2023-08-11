@@ -1,241 +1,241 @@
 /* encoding: GBK */
   {
     //MSG_TURBO
-    "--FF--",
+    "加速",
 
     //MSG_CHARGE
-    "[DC IN]",
+    "[充電]",
 
     //MSG_BUFFER
-    "ROM Buffer %2dMB",
+    "  ROM緩存: %2dMB",
 
     // MSG_BROWSER_HELP
-    "○:Select  ×:Menu  □:" FONT_UP_DIRECTORY_GBK,
+    "○:選擇  ×:菜單  □:" FONT_UP_DIRECTORY_GBK,
 
     // MSG_MENU_DATE_FMT_0
-    "%4d/%2d/%2d %-3s %2d:%02d",
+    "%4d/%d/%d %-4s %2d:%02d",
 
     // MSG_MENU_DATE_FMT_1
-    "%2d/%2d/%4d %-3s %2d:%02d",
+    "%d/%d/%4d %-4s %2d:%02d",
 
     // MSG_MAIN_MENU_TITLE
-    "Menu",
+    "菜單",
 
     // MSG_MAIN_MENU_0
-    "Load state : SLOT %d",
+    "即時讀檔: %d",
 
     // MSG_MAIN_MENU_1
-    "Save state : SLOT %d",
+    "即時存檔: %d",
 
     // MSG_MAIN_MENU_2
-    "Savestate details " FONT_R_TRIGGER_GBK,
+    "即時存檔 " FONT_R_TRIGGER_GBK,
 
     // MSG_MAIN_MENU_3
-    "Screen capture : %s",
+    "截圖: %s",
 
     // MSG_MAIN_MENU_4
-    "Emulator options",
+    "模擬器設定",
 
     // MSG_MAIN_MENU_5
-    "Gamepad config",
+    "按鍵設定",
 
     // MSG_MAIN_MENU_6
-    "Analog stick config",
+    "搖杆設定",
 
     //MSG_MAIN_MENU_CHEAT
-    "Cheats options",
+    "金手指",
 
     // MSG_MAIN_MENU_7
-    "Load game " FONT_L_TRIGGER_GBK,
+    "讀取遊戲 " FONT_L_TRIGGER_GBK,
 
     // MSG_MAIN_MENU_8
-    "Reset",
+    "重啟遊戲",
 
     // MSG_MAIN_MENU_9
-    "Return to game",
+    "返回遊戲",
 
     // MSG_MAIN_MENU_10
-    "Sleep",
+    "待機",
 
     // MSG_MAIN_MENU_11
-    "Exit TempGBA",
+    "退出TempGBA",
 
     // MSG_MAIN_MENU_HELP_0
-    "○:Load  " FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select slot",
+    "○:讀取  " FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇存档",
 
     // MSG_MAIN_MENU_HELP_1
-    "○:Save  " FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select slot",
+    "○:保存  " FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇存档",
 
     // MSG_MAIN_MENU_HELP_2
-    "○:Sub menu  " FONT_R_TRIGGER_GBK ":Shortcut key",
+    "○:子菜單  " FONT_R_TRIGGER_GBK ":快捷鍵",
 
     // MSG_MAIN_MENU_HELP_3
-    "○:Save Image  " FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select image format",
+    "○:保存圖像  " FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇格式",
 
     // MSG_MAIN_MENU_HELP_4
-    "○:Sub menu",
+    "○:子菜單",
 
     // MSG_MAIN_MENU_HELP_5
-    "○:Sub menu",
+    "○:子菜單",
 
     // MSG_MAIN_MENU_HELP_6
-    "○:Sub menu",
+    "○:子菜單",
 
     // MSG_MAIN_MENU_HELP_CHEAT
-    "○:Select to manage cheats",
+    "○:管理金手指",
 
     // MSG_MAIN_MENU_HELP_7
-    "○:File browser  " FONT_L_TRIGGER_GBK ":Shortcut key",
+    "○:瀏覽文件  " FONT_L_TRIGGER_GBK ":快捷鍵",
 
     // MSG_MAIN_MENU_HELP_8
-    "○:Reset game",
+    "○:復位遊戲",
 
     // MSG_MAIN_MENU_HELP_9
-    "○:Return to game",
+    "○:返回遊戲",
 
     // MSG_MAIN_MENU_HELP_10
-    "○:Sleep mode",
+    "○:待機模式",
 
     // MSG_MAIN_MENU_HELP_11
-    "○:Exit",
+    "○:退出",
 
     // MSG_OPTION_MENU_TITLE
-    "Emulator options",
+    "模擬器設定",
 
     // MSG_OPTION_MENU_0
-    "Display mode    : %s",
+    "画面模式: %s",
 
     // MSG_OPTION_MENU_1
-    "Magnification   : %d%%",
+    "画面縮放: %d%%",
 
     // MSG_OPTION_MENU_2
-    "Bilinear filter : %s",
+    "画面過濾: %s",
 
     // MSG_OPTION_MENU_SHOW_FPS
-    "Show FPS        : %s",
+    "顯示FPS : %s",
 
     // MSG_OPTION_MENU_3
-    "Frameskip type  : %s",
+    "跳幀類型: %s",
 
     // MSG_OPTION_MENU_4
-    "Frameskip value : %d",
+    "最大跳幀: %d",
 
     // MSG_OPTION_MENU_5
-    "CPU clock freq  : %s",
+    "CPU 速率: %s",
 
     // MSG_OPTION_MENU_6
-    "Sound volume    : %s",
+    "音量大小: %s",
 
     // MSG_OPTION_MENU_7
-    "Stack optimize  : %s",
+    "内存優化: %s",
 
     // MSG_OPTION_MENU_8
-    "Boot from BIOS  : %s",
+    "起動BIOS: %s",
 
     // MSG_OPTION_MENU_9
-    "Update backup   : %s",
+    "存档更新: %s",
 
     // MSG_OPTION_MENU_10
-    "Language        : %s",
+    "菜單語言: %s",
 
     // MSG_OPTION_MENU_DEFAULT
-    "Restore",
+    "恢復默認設定",
 
     // MSG_OPTION_MENU_11
-    "Back",
+    "返回",
 
     // MSG_OPTION_MENU_12
-    "Color correction: %s",
+    "顏色修正: %s",
 
     // MSG_OPTION_MENU_13
-    "Load backup ID  : %s",
+    "存檔類型: %s",
 
     // MSG_OPTION_MENU_HELP_0
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   遊戲/模擬器配置",
 
     // MSG_OPTION_MENU_HELP_1
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   遊戲/模擬器配置",
 
     // MSG_OPTION_MENU_HELP_2
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   遊戲/模擬器配置",
 
     // MSG_OPTION_MENU_HELP_SHOW_FPS
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   模擬器配置",
 
     // MSG_OPTION_MENU_HELP_3
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   遊戲/模擬器配置",
 
     // MSG_OPTION_MENU_HELP_4
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   遊戲/模擬器配置",
 
     // MSG_OPTION_MENU_HELP_5
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   遊戲/模擬器配置",
 
     // MSG_OPTION_MENU_HELP_6
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   遊戲/模擬器配置",
 
     // MSG_OPTION_MENU_HELP_7
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   模擬器配置",
 
     // MSG_OPTION_MENU_HELP_8
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   模擬器配置",
 
     // MSG_OPTION_MENU_HELP_9
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   模擬器配置",
 
     // MSG_OPTION_MENU_HELP_10
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   模擬器配置",
 
     // MSG_OPTION_MENU_HELP_DEFAULT
-    "○:Restore default settings",
+    "○:恢復到模擬器初始設定",
 
     // MSG_OPTION_MENU_HELP_11
-    "○:Main menu",
+    "○:主菜單",
 
     // MSG_OPTION_MENU_HELP_12
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   模擬器配置",
 
     // MSG_OPTION_MENU_HELP_13
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇   模擬器配置",
 
     // MSG_STATE_MENU_DATE_FMT_0
-    "%4d/%2d/%2d %-3s %2d:%02d:%02d",
+    "%4d/%2d/%2d %-4s %2d:%02d:%02d",
 
     // MSG_STATE_MENU_DATE_FMT_1
-    "%2d/%2d/%4d %-3s %2d:%02d:%02d",
+    "%2d/%2d/%4d %-4s %2d:%02d:%02d",
 
     // MSG_STATE_MENU_DATE_NONE_0
-    "----/--/-- --- --:--:--",
+    "----/--/-- ---- --:--:--",
 
     // MSG_STATE_MENU_DATE_NONE_1
-    "--/--/---- --- --:--:--",
+    "--/--/---- ---- --:--:--",
 
     // MSG_STATE_MENU_STATE_NONE
-    "No data in this slot",
+    "沒有找到即時存档",
 
     // MSG_STATE_MENU_TITLE
-    "Savestate",
+    "即時存档",
 
     // MSG_STATE_MENU_0
     "",
 
     // MSG_STATE_MENU_1
-    "Load state from file",
+    "從文件讀取即時存档",
 
     // MSG_STATE_MENU_2
-    "Back",
+    "返回",
 
     // MSG_STATE_MENU_HELP_0
-    "○:Execute  " FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select",
+    "○:確定  " FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇",
 
     // MSG_STATE_MENU_HELP_1
-    "○:File browser",
+    "○:瀏覽文件",
 
     // MSG_STATE_MENU_HELP_2
-    "○:Main menu",
+    "○:主菜單",
 
     // MSG_PAD_MENU_TITLE
-    "Gamepad config",
+    "按鍵設定",
 
     // MSG_PAD_MENU_0
     "↑     : %s",
@@ -274,13 +274,13 @@
     "SELECT : %s",
 
     // MSG_PAD_MENU_12
-    "Back",
+    "返回",
 
     // MSG_PAD_MENU_HELP_0
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇",
 
     // MSG_PAD_MENU_HELP_1
-    "○:Main menu",
+    "○:主菜單",
 
     //PADの設定 コンフィグ
 
@@ -315,154 +315,154 @@
     "SELECT",
 
     // MSG_PAD_MENU_CFG_10
-    "menu",
+    "菜單",
 
     // MSG_PAD_MENU_CFG_11
-    "fast forward",
+    "加速",
 
     // MSG_PAD_MENU_CFG_12
-    "load state",
+    "即時讀档",
 
     // MSG_PAD_MENU_CFG_13
-    "save state",
+    "即時存档",
 
     // MSG_PAD_MENU_CFG_14
-    "RAPID FIRE A",
+    "A連射",
 
     // MSG_PAD_MENU_CFG_15
-    "RAPID FIRE B",
+    "B連射",
 
     // MSG_PAD_MENU_CFG_16
-    "RAPID FIRE L",
+    "L連射",
 
     // MSG_PAD_MENU_CFG_17
-    "RAPID FIRE R",
+    "R連射",
 
     // MSG_PAD_MENU_CFG_18
-    "show fps",
+    "顯示FPS",
 
     // MSG_PAD_MENU_CFG_19
-    "none",
+    "無",
 
     // MSG_A_PAD_MENU_TITLE
-    "Analog stick config",
+    "搖杆設定",
 
     // MSG_A_PAD_MENU_0
-    "Analog ↑ : %s",
+    "搖杆 ↑ : %s",
 
     // MSG_A_PAD_MENU_1
-    "Analog ↓ : %s",
+    "搖杆 ↓ : %s",
 
     // MSG_A_PAD_MENU_2
-    "Analog ← : %s",
+    "搖杆 ← : %s",
 
     // MSG_A_PAD_MENU_3
-    "Analog → : %s",
+    "搖杆 → : %s",
 
     // MSG_A_PAD_MENU_4
-    "Enable analog input : %s",
+    "使用搖杆: %s",
 
     // MSG_A_PAD_MENU_5
-    "Analog sensitivity  : %d",
+    "搖杆靈敏度: %d",
 
     // MSG_A_PAD_MENU_6
-    "Back",
+    "返回",
 
     // MSG_A_PAD_MENU_HELP_0
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇",
 
     // MSG_A_PAD_MENU_HELP_1
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":選擇",
 
     // MSG_A_PAD_MENU_HELP_2
-    "○:Main menu",
+    "○:主菜單",
 
     //MSG_CHEAT_MENU_TITLE,
-    "Cheats options",
+    "金手指",
 
     //MSG_CHEAT_MENU_NON_LOAD,
-    "(no) %2d: ------------------------",
+    "(空)%2d: ------------------------",
 
     //MSG_CHEAT_MENU_0,
-    "%%s %2d: %s",
+    "%%s%2d: %s",
 
     //MSG_CHEAT_MENU_1,
-    "Load Cheat File  " FONT_L_TRIGGER_GBK,
+    "讀取金手指文件 " FONT_L_TRIGGER_GBK,
 
     //MSG_CHEAT_MENU_2,
-    "Back",
+    "返回",
 
     //MSG_CHEAT_MENU_3,
-    "cheat page: %d",
+    "代碼頁: %d",
 
     //MSG_CHEAT_MENU_HELP_0,
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Activate/deactivate",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":使用/禁用代碼",
 
     //MSG_CHEAT_MENU_HELP_1,
-    "○:Cheat file browser  "FONT_L_TRIGGER_GBK ":Shortcut key",
+    "○:瀏覽金手指文件  " FONT_L_TRIGGER_GBK ":快捷鍵",
 
     //MSG_CHEAT_MENU_HELP_2,
-    "○:Main menu",
+    "○:主菜單",
 
     //MSG_CHEAT_MENU_HELP_3,
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Change page",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":翻頁",
 
     // MSG_NON_LOAD_GAME
-    "Game is not loaded",
+    "沒有讀取遊戲",
 
     // MSG_DAYW_0
-    "SUN",
+    "(日)",
 
     // MSG_DAYW_1
-    "MON",
+    "(一)",
 
     // MSG_DAYW_2
-    "TUE",
+    "(二)",
 
     // MSG_DAYW_3
-    "WED",
+    "(三)",
 
     // MSG_DAYW_4
-    "THU",
+    "(四)",
 
     // MSG_DAYW_5
-    "FRI",
+    "(五)",
 
     // MSG_DAYW_6
-    "SAT",
+    "(六)",
 
     // MSG_YES
-    "YES",
+    "是",
 
     // MSG_NO
-    "NO",
+    "否",
 
     // MSG_ON
-    "ON",
+    "開",
 
     // MSG_OFF
-    "OFF",
+    "關",
 
     // MSG_ENABLED
-    "ON  ",
+    "使用",
 
     // MSG_DISABLED
-    "OFF ",
+    "禁用",
 
     // MSG_AUTO
-    "AUTO",
+    "自動",
 
     // MSG_MANUAL
-    "MANUAL",
+    "手動",
 
     // MSG_EXITONLY
-    "Exit Only",
+    "退出時",
 
     // MSG_LOAD
-    "LOAD",
+    "讀取",
 
     // MSG_SAVE
-    "SAVE",
+    "保存",
 
     // MSG_SCN_SCALED_NONE
     "100% GU",
@@ -474,7 +474,7 @@
     "150% SW",
 
     // MSG_SCN_SCALED_USER
-    "USER GU",
+    "指定 GU",
 
     // MSG_SS_DATE_FMT_0
     "%04d_%02d_%02d_%s%02d_%02d_%02d_%03d",
@@ -483,62 +483,62 @@
     "%02d_%02d_%04d_%s%02d_%02d_%02d_%03d",
 
     // MSG_ERR_SET_DIR_0
-    "ERROR [%s] Specified directory is invalid.",
+    "錯誤: [%s] 指定的目録無效。",
 
     // MSG_ERR_SET_DIR_1
-    "ERROR [%s] Not specified.",
+    "錯誤: [%s] 指定的目録不存在。",
 
     // MSG_ERR_SET_DIR_2
-    "The error occurred. It's set as the following directories.\n%s",
+    "出現錯誤，将設定爲以下目録。\n%s",
 
     // png.c
     // MSG_ERR_SS_PNG_0
-    "Could not allocate memory for PNG.",
+    "無法確保内存。",
 
     // MSG_ERR_SS_PNG_1
-    "Could not enecode PNG image.",
+    "無法生成PNG圖像。",
 
     // memory.c
     // MSG_LOADING_ROM
-    "Now Loading...",
+    "讀取中...",
 
     // MSG_SEARCHING_BACKUP_ID
-    "Searching BACKUP ID",
+    "存档ID搜索中...",
 
     // main.c
     // MSG_GBA_SLEEP_MODE
-    "SLEEP MODE",
+    "待機模式",
 
     // MSG_ERR_LOAD_DIR_INI
-    "Could not load dir.ini file.\nEverything is set as the following directory.\n%s",
+    "無法讀取dir.ini。将設定爲以下目録。\n%s",
 
     // MSG_ERR_BIOS_NONE
-    "Could not load BIOS image file.",
+    "無法讀取BIOS文件。",
 
     // MSG_ERR_LOAD_GAMEPACK
-    "Could not load the game file.",
+    "無法讀取遊戲文件。",
 
     // MSG_ERR_OPEN_GAMEPACK
-    "Could not open the game file.",
+    "沒有讀取遊戲文件。",
 
     // MSG_ERR_START_CALLBACK_THREAD
-    "Could not start the callback thread.",
+    "無法使用callback thread。",
 
     // sound.c
     // MSG_ERR_RESERVE_AUDIO_CHANNEL
-    "Could not reserve audio channel.",
+    "無法確保音頻聲道。",
 
-    // MSG_ERR_START_SOUND_THREAD
-    "Could not start the sound thread.",
+    // MSG_ERR_START_SOUND_THEREAD
+    "無法開始音頻線程。",
 
     // MSG_ERR_MALLOC
-    "Could not allocate memory.",
+    "無法確保内存。",
 
     // MSG_ERR_CONT
-    "Press any button to continue.",
+    "請按任意鍵。",
 
     // MSG_ERR_QUIT
-    "Press any button to exit.",
+    "請按任意鍵結束。",
 
     // MSG_BLANK
     ""

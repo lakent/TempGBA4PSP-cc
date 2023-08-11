@@ -21,7 +21,7 @@
 #include "common.h"
 
 #define GPSP_CONFIG_FILENAME  "tempgba.cfg"
-#define GPSP_CONFIG_NUM       (15 + 16) // options + game pad config
+#define GPSP_CONFIG_NUM       (17 + 16) // options + game pad config
 #define GPSP_GAME_CONFIG_NUM  (7 + 16)
 
 #define COLOR_BG            COLOR15( 3,  5,  8)
@@ -286,7 +286,6 @@ static int sort_function(const void *dest_str_ptr, const void *src_str_ptr);
 static s32 save_game_config_file(void);
 
 static void update_status_string(char *time_str, char *batt_str, u16 *color_batt);
-static void update_status_string_gbk(char *time_str, char *batt_str, u16 *color_batt);
 static void get_timestamp_string(char *buffer, u16 msg_id, pspTime *msg_time, int day_of_week);
 
 static void get_savestate_info(char *filename, u16 *snapshot, char *timestamp);
@@ -518,48 +517,25 @@ s32 load_file(const char **wildcards, char *result, char *default_dir_name)
     while (repeat)
     {
       clear_screen(COLOR15_TO_32(COLOR_BG));
-		if (option_language == 0)
-			print_string(current_dir_short, 6, 2, COLOR_HELP_TEXT, BG_NO_FILL);
-		else
-			print_string_gbk(current_dir_short, 6, 2, COLOR_HELP_TEXT, BG_NO_FILL);
+      print_string(current_dir_short, 6, 2, COLOR_HELP_TEXT, BG_NO_FILL);
       if ((counter % 30) == 0)
-	  {
-	    if (option_language == 0)
+      {
         update_status_string(time_str, batt_str, &color_batt_life);
-		else
-        update_status_string_gbk(time_str, batt_str, &color_batt_life);
-	  }
+      }
       counter++;
-	  if (option_language == 0)
-	  print_string(time_str, TIME_STATUS_POS_X, 2, COLOR_HELP_TEXT, BG_NO_FILL);
-	  else
-	  print_string_gbk(time_str, TIME_STATUS_POS_X, 2, COLOR_HELP_TEXT, BG_NO_FILL);
- 
-      if (option_language == 0)
-		print_string(batt_str, BATT_STATUS_POS_X, 2, color_batt_life, BG_NO_FILL);
-	  else
-		print_string_gbk(batt_str, BATT_STATUS_POS_X, 2, color_batt_life, BG_NO_FILL);
-
-		if (option_language == 0)
-			print_string(MSG[MSG_BROWSER_HELP], 30, 258, COLOR_HELP_TEXT, BG_NO_FILL);
-		else
-			print_string_gbk(MSG[MSG_BROWSER_HELP], 30, 258, COLOR_HELP_TEXT, BG_NO_FILL);
+      print_string(time_str, TIME_STATUS_POS_X, 2, COLOR_HELP_TEXT, BG_NO_FILL);
+      print_string(batt_str, BATT_STATUS_POS_X, 2, color_batt_life, BG_NO_FILL);
+      print_string(MSG[MSG_BROWSER_HELP], 30, 258, COLOR_HELP_TEXT, BG_NO_FILL);
 
       char str_buffer_size[32];
       sprintf(str_buffer_size, MSG[MSG_BUFFER], gamepak_ram_buffer_size >> 20);
-		if (option_language == 0)
-			print_string(str_buffer_size, 384, 258, COLOR_HELP_TEXT, BG_NO_FILL);
-		else
-			print_string_gbk(str_buffer_size, 384, 258, COLOR_HELP_TEXT, BG_NO_FILL);
+      print_string(str_buffer_size, 384, 258, COLOR_HELP_TEXT, BG_NO_FILL);
 
       // PSP controller - hold
       if (get_pad_input(PSP_CTRL_HOLD) != 0)
-		{
-		if (option_language == 0)
-			print_string(FONT_KEY_ICON_GBK, 6, 258, COLOR15_YELLOW, BG_NO_FILL);
-		else
-			print_string_gbk(FONT_KEY_ICON, 6, 258, COLOR15_YELLOW, BG_NO_FILL);
-		}
+      {
+        print_string(FONT_KEY_ICON, 6, 258, COLOR15_YELLOW, BG_NO_FILL);
+      }
       // draw scroll bar
       if (num[FILE_LIST] > FILE_LIST_ROWS)
       {
@@ -818,10 +794,7 @@ static void get_savestate_info(char *filename, u16 *snapshot, char *timestamp)
     if (snapshot != NULL)
     {
       memset(snapshot, 0, GBA_SCREEN_SIZE);
-		if (option_language == 0)
-			print_string_ext(MSG[MSG_STATE_MENU_STATE_NONE], X_POS_CENTER, 74, COLOR15_WHITE, BG_NO_FILL, snapshot, GBA_SCREEN_WIDTH);
-		else
-			print_string_ext_gbk(MSG[MSG_STATE_MENU_STATE_NONE], X_POS_CENTER, 74, COLOR15_WHITE, BG_NO_FILL, snapshot, GBA_SCREEN_WIDTH);
+      print_string_ext(MSG[MSG_STATE_MENU_STATE_NONE], X_POS_CENTER, 74, COLOR15_WHITE, BG_NO_FILL, snapshot, GBA_SCREEN_WIDTH);
     }
 
     sprintf(timestamp, "%s", MSG[(date_format == 0) ? MSG_STATE_MENU_DATE_NONE_0 : MSG_STATE_MENU_DATE_NONE_1]);
@@ -852,7 +825,7 @@ void action_savestate(void)
   char savestate_filename[MAX_FILE];
   u16 *current_screen;
 
-  current_screen = copy_screen();
+  current_screen = copy_screen(NULL);
 
   get_savestate_filename(savestate_slot, savestate_filename);
   save_state(savestate_filename, current_screen);
@@ -948,12 +921,10 @@ u32 menu(void)
     MSG[MSG_AUTO]
   };
 
-  const char *language_option[] =
+  const char *backup_id_options[] =
   {
-    MSG[MSG_LANG_JAPANESE],
-    MSG[MSG_LANG_ENGLISH],
-    MSG[MSG_LANG_CHS],
-    MSG[MSG_LANG_CHT]
+    MSG[MSG_OFF],
+    MSG[MSG_AUTO]
   };
 
   const char *sound_volume_options[] =
@@ -1030,6 +1001,7 @@ u32 menu(void)
 
   auto void gamepak_file_none(void);
   auto void gamepak_file_reopen(void);
+  auto void on_change_cc(void);
 
   void menu_init(void)
   {
@@ -1225,6 +1197,8 @@ u32 menu(void)
 	option_screen_capture_format = 0;
 	option_enable_analog = 0;
 	option_analog_sensitivity = 4;
+	option_load_backup_id = 0;
+	option_color_correction = 0;
 	//int id_language;
 	sceUtilityGetSystemParamInt(PSP_SYSTEMPARAM_ID_INT_LANGUAGE, &id_language);
 	if (id_language == PSP_SYSTEMPARAM_LANGUAGE_JAPANESE)
@@ -1290,23 +1264,23 @@ u32 menu(void)
 
   #define DRAW_TITLE_GBK(title)                                                   \
    sprintf(line_buffer, "%s %s", FONT_GBA_ICON_GBK, MSG[title]);                  \
-   print_string_gbk(line_buffer, 6, 2, COLOR_HELP_TEXT, BG_NO_FILL);              \
+   print_string(line_buffer, 6, 2, COLOR_HELP_TEXT, BG_NO_FILL);              \
 
   #define DRAW_TITLE_PSP_GBK(title)                                                   \
    sprintf(line_buffer, "%s %s", FONT_PSP_ICON_GBK, MSG[title]);                  \
-   print_string_gbk(line_buffer, 6, 2, COLOR_HELP_TEXT, BG_NO_FILL);              \
+   print_string(line_buffer, 6, 2, COLOR_HELP_TEXT, BG_NO_FILL);              \
 
   #define DRAW_TITLE_SAVESTATE_GBK(title)                                                   \
    sprintf(line_buffer, "%s %s", FONT_MSC_ICON_GBK, MSG[title]);                  \
-   print_string_gbk(line_buffer, 6, 2, COLOR_HELP_TEXT, BG_NO_FILL);              \
+   print_string(line_buffer, 6, 2, COLOR_HELP_TEXT, BG_NO_FILL);              \
 
   #define DRAW_TITLE_OPT_GBK(title)                                                   \
    sprintf(line_buffer, "%s %s", FONT_OPT_ICON_GBK, MSG[title]);                  \
-   print_string_gbk(line_buffer, 6, 2, COLOR_HELP_TEXT, BG_NO_FILL);              \
+   print_string(line_buffer, 6, 2, COLOR_HELP_TEXT, BG_NO_FILL);              \
 
   #define DRAW_TITLE_PAD_GBK(title)                                                   \
    sprintf(line_buffer, "%s %s", FONT_PAD_ICON_GBK, MSG[title]);                  \
-   print_string_gbk(line_buffer, 6, 2, COLOR_HELP_TEXT, BG_NO_FILL);              \
+   print_string(line_buffer, 6, 2, COLOR_HELP_TEXT, BG_NO_FILL);              \
 
   void submenu_emulator(void)
   {
@@ -1353,10 +1327,7 @@ u32 menu(void)
         savestate_slot = current_option_num;
         menu_change_state();
       }
-	if (option_language == 0)
       print_string(MSG[savestate_action ? MSG_SAVE : MSG_LOAD], MENU_LIST_POS_X + ((strlen(savestate_timestamps[0]) + 1) * FONTWIDTH), (current_option_num * FONTHEIGHT) + 28, COLOR_ACTIVE_ITEM, BG_NO_FILL);
-	else
-      print_string_gbk(MSG[savestate_action ? MSG_SAVE : MSG_LOAD], MENU_LIST_POS_X + ((strlen(savestate_timestamps[0]) + 1) * FONTWIDTH), (current_option_num * FONTHEIGHT) + 28, COLOR_ACTIVE_ITEM, BG_NO_FILL);
     }
   }
 
@@ -1447,10 +1418,7 @@ u32 menu(void)
     first_load = 1;
 
     memset(current_screen, 0x00, GBA_SCREEN_SIZE);
-	if (option_language == 0)
     print_string_ext(MSG[MSG_NON_LOAD_GAME], X_POS_CENTER, 74, COLOR15_WHITE, BG_NO_FILL, current_screen, GBA_SCREEN_WIDTH);
-	else
-    print_string_ext_gbk(MSG[MSG_NON_LOAD_GAME], X_POS_CENTER, 74, COLOR15_WHITE, BG_NO_FILL, current_screen, GBA_SCREEN_WIDTH);
   }
 
   void gamepak_file_reopen(void)
@@ -1470,6 +1438,10 @@ u32 menu(void)
     quit();
   }
 
+  void on_change_cc(void)
+  {
+      current_screen = copy_screen(current_screen);
+  }
 
   // Marker for help information, don't go past this mark (except \n)------*
   MenuOptionType emulator_options[] =
@@ -1480,23 +1452,27 @@ u32 menu(void)
 
     STRING_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_2], on_off_options, &option_screen_filter, 2, MSG_OPTION_MENU_HELP_2, 2),
 
-    STRING_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_SHOW_FPS], on_off_options, &psp_fps_debug, 2, MSG_OPTION_MENU_HELP_SHOW_FPS, 3),
+    STRING_SELECTION_OPTION(on_change_cc, MSG[MSG_OPTION_MENU_12], on_off_options, &option_color_correction, 2, MSG_OPTION_MENU_HELP_12, 3),
+
+    STRING_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_SHOW_FPS], on_off_options, &psp_fps_debug, 2, MSG_OPTION_MENU_HELP_SHOW_FPS, 4),
 
     STRING_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_3], frameskip_options, &option_frameskip_type, 3, MSG_OPTION_MENU_HELP_3, 5),
 
     NUMERIC_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_4], &option_frameskip_value, 10, MSG_OPTION_MENU_HELP_4, 6),
 
-    STRING_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_5], clock_speed_options, &option_clock_speed, 4, MSG_OPTION_MENU_HELP_5, 7), 
+    STRING_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_5], clock_speed_options, &option_clock_speed, 4, MSG_OPTION_MENU_HELP_5, 8),
 
-    STRING_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_6], sound_volume_options, &option_sound_volume, 11, MSG_OPTION_MENU_HELP_6, 8),
+    STRING_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_6], sound_volume_options, &option_sound_volume, 11, MSG_OPTION_MENU_HELP_6, 9),
 
     STRING_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_7], stack_optimize_options, &option_stack_optimize, 2, MSG_OPTION_MENU_HELP_7, 10),
 
     STRING_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_8], yes_no_options, &option_boot_mode, 2, MSG_OPTION_MENU_HELP_8, 11),
 
-    STRING_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_9], update_backup_options, &option_update_backup, 2, MSG_OPTION_MENU_HELP_9, 12), 
+    STRING_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_9], update_backup_options, &option_update_backup, 2, MSG_OPTION_MENU_HELP_9, 12),
 
-    STRING_SELECTION_ACTION_OPTION(menu_exit, NULL, MSG[MSG_OPTION_MENU_10], language_option, &option_language, 4, MSG_OPTION_MENU_HELP_10, 14), 
+    STRING_SELECTION_OPTION(NULL, MSG[MSG_OPTION_MENU_13], backup_id_options, &option_load_backup_id, 2, MSG_OPTION_MENU_HELP_13, 13),
+
+    STRING_SELECTION_ACTION_OPTION(menu_exit, NULL, MSG[MSG_OPTION_MENU_10], language_option, &option_language, 4, MSG_OPTION_MENU_HELP_10, 15),
 
     ACTION_OPTION(menu_default, NULL, MSG[MSG_OPTION_MENU_DEFAULT], MSG_OPTION_MENU_HELP_DEFAULT, 16),
 
@@ -1592,7 +1568,7 @@ u32 menu(void)
 
     STRING_SELECTION_ACTION_OPTION(menu_screen_capture, NULL, MSG[MSG_MAIN_MENU_3], image_format_options, &option_screen_capture_format, 2, MSG_MAIN_MENU_HELP_3, 4),
 
-    SUBMENU_OPTION(&emulator_menu, MSG[MSG_MAIN_MENU_4], MSG_MAIN_MENU_HELP_4, 6), 
+    SUBMENU_OPTION(&emulator_menu, MSG[MSG_MAIN_MENU_4], MSG_MAIN_MENU_HELP_4, 6),
 
     SUBMENU_OPTION(&gamepad_config_menu, MSG[MSG_MAIN_MENU_5], MSG_MAIN_MENU_HELP_5, 7),
 
@@ -1635,7 +1611,7 @@ u32 menu(void)
 
   sound_pause = 1;
 
-  current_screen = copy_screen();
+  current_screen = copy_screen(NULL);
   savestate_screen = (u16 *)safe_malloc(GBA_SCREEN_SIZE);
 
   if (gamepak_filename[0] == 0)
@@ -1678,26 +1654,17 @@ u32 menu(void)
 
     if ((counter % 30) == 0)
 	{
-	  if (option_language == 0)
       update_status_string(time_str, batt_str, &color_batt_life);
-	  else
-      update_status_string_gbk(time_str, batt_str, &color_batt_life);
 	}
     counter++;
-	if (option_language == 0)
     print_string(time_str, TIME_STATUS_POS_X, 2, COLOR_HELP_TEXT, BG_NO_FILL);
-	else
-    print_string_gbk(time_str, TIME_STATUS_POS_X, 2, COLOR_HELP_TEXT, BG_NO_FILL);
-
-	if (option_language == 0)
     print_string(batt_str, BATT_STATUS_POS_X, 2, color_batt_life, BG_NO_FILL);
-	else
-	print_string_gbk(batt_str, BATT_STATUS_POS_X, 2, color_batt_life, BG_NO_FILL);
-
     print_string(game_title, 228, 28, COLOR_INACTIVE_ITEM, BG_NO_FILL);
     blit_to_screen(screen_image_ptr, GBA_SCREEN_WIDTH, GBA_SCREEN_HEIGHT, SCREEN_IMAGE_POS_X, SCREEN_IMAGE_POS_Y);
 
-    //print_string(backup_id, 228, 208, COLOR_INACTIVE_ITEM, BG_NO_FILL);
+    if (option_load_backup_id != 0) {
+        print_string(backup_id, 228, 208, COLOR_INACTIVE_ITEM, BG_NO_FILL);
+    }
 
     if (current_menu->init_function != NULL)
     {
@@ -1719,17 +1686,11 @@ u32 menu(void)
         else
           strcpy(line_buffer, display_option->display_string);
       }
-/*file charset*/
-		if (option_language == 0)
-			print_string(line_buffer, MENU_LIST_POS_X, (display_option->line_number * FONTHEIGHT) + 28, (display_option == current_option) ? COLOR_ACTIVE_ITEM : COLOR_INACTIVE_ITEM, BG_NO_FILL);
-		else
-			print_string_gbk(line_buffer, MENU_LIST_POS_X, (display_option->line_number * FONTHEIGHT) + 28, (display_option == current_option) ? COLOR_ACTIVE_ITEM : COLOR_INACTIVE_ITEM, BG_NO_FILL);
+      /*file charset*/
+      print_string(line_buffer, MENU_LIST_POS_X, (display_option->line_number * FONTHEIGHT) + 28, (display_option == current_option) ? COLOR_ACTIVE_ITEM : COLOR_INACTIVE_ITEM, BG_NO_FILL);
     }
 
-	if (option_language == 0)
-		print_string(MSG[current_option->help_string], 30, 258, COLOR_HELP_TEXT, BG_NO_FILL);
-	else
-		print_string_gbk(MSG[current_option->help_string], 30, 258, COLOR_HELP_TEXT, BG_NO_FILL);
+    print_string(MSG[current_option->help_string], 30, 258, COLOR_HELP_TEXT, BG_NO_FILL);
 
     // PSP controller - hold
     if (get_pad_input(PSP_CTRL_HOLD) != 0)
@@ -1803,7 +1764,7 @@ u32 menu(void)
       case CURSOR_DEFAULT:
 	  {
         /*if (current_menu == &emulator_menu)
-		{	
+		{
 			option_screen_scale = SCALED_X15_GU;
 			option_screen_mag = 170;
 			option_screen_filter = FILTER_BILINEAR;
@@ -1956,72 +1917,6 @@ static void update_status_string(char *time_str, char *batt_str, u16 *color_batt
   }
 }
 
-static void update_status_string_gbk(char *time_str, char *batt_str, u16 *color_batt)
-{
-  pspTime current_time = { 0 };
-
-  u32 i = 0;
-  int batt_life_per;
-  int batt_life_time;
-
-  char batt_icon[4][4] =
-  {
-    FONT_BATTERY0_GBK "\0", // empty
-    FONT_BATTERY1_GBK "\0",
-    FONT_BATTERY2_GBK "\0",
-    FONT_BATTERY3_GBK "\0", // full
-  };
-
-  sceRtcGetCurrentClockLocalTime(&current_time);
-  int day_of_week = sceRtcGetDayOfWeek(current_time.year, current_time.month, current_time.day);
-
-  get_timestamp_string(time_str, MSG_MENU_DATE_FMT_0, &current_time, day_of_week);
-
-
-  batt_life_per = scePowerGetBatteryLifePercent();
-
-  if (batt_life_per < 0)
-  {
-    sprintf(batt_str, "%3s --%%", batt_icon[0]);
-  }
-  else
-  {
-    if (batt_life_per > 66)      i = 3;
-    else if (batt_life_per > 33) i = 2;
-    else if (batt_life_per >  9) i = 1;
-    else                         i = 0;
-
-    sprintf(batt_str, "%3s%3d%%", batt_icon[i], batt_life_per);
-  }
-
-  if (scePowerIsPowerOnline() == 1)
-  {
-    sprintf(batt_str, "%s%s", batt_str, MSG[MSG_CHARGE]);
-  }
-  else
-  {
-    batt_life_time = scePowerGetBatteryLifeTime();
-
-    if (batt_life_time < 0)
-      sprintf(batt_str, "%s%s", batt_str, "[--:--]");
-    else
-      sprintf(batt_str, "%s[%2d:%02d]", batt_str, (batt_life_time / 60) % 100, batt_life_time % 60);
-  }
-
-  if (scePowerIsBatteryCharging() == 1)
-  {
-    *color_batt = COLOR_BATT_CHARG;
-  }
-  else
-  {
-    if (scePowerIsLowBattery() == 1)
-      *color_batt = COLOR_BATT_LOW;
-    else
-      *color_batt = COLOR_BATT_NORMAL;
-  }
-}
-
-
 static void get_timestamp_string(char *buffer, u16 msg_id, pspTime *msg_time, int day_of_week)
 {
   const char *week_str[] =
@@ -2129,10 +2024,12 @@ s32 save_config_file(void)
     file_options[12]  = option_enable_analog;
     file_options[13]  = option_analog_sensitivity;
     file_options[14] = option_language;
+    file_options[15] = option_load_backup_id;
+    file_options[16] = option_color_correction;
 
     for (i = 0; i < 16; i++)
     {
-      file_options[15 + i] = gamepad_config_map[i];
+      file_options[17 + i] = gamepad_config_map[i];
     }
 
     FILE_WRITE_ARRAY(config_file, file_options);
@@ -2254,10 +2151,12 @@ s32 load_config_file(void)
       option_enable_analog  = file_options[12] % 2;
       option_analog_sensitivity = file_options[13] % 10;
       option_language       = file_options[14] % 4;
+      option_load_backup_id = file_options[15] % 2;
+      option_color_correction = file_options[16] % 2;
 
       for (i = 0; i < 16; i++)
       {
-        gamepad_config_map[i] = file_options[15 + i] % (BUTTON_ID_NONE + 1);
+        gamepad_config_map[i] = file_options[17 + i] % (BUTTON_ID_NONE + 1);
 
         if (gamepad_config_map[i] == BUTTON_ID_MENU)
           menu_button = i;
@@ -2283,6 +2182,8 @@ s32 load_config_file(void)
   option_screen_capture_format = 0;
   option_enable_analog = 0;
   option_analog_sensitivity = 4;
+  option_load_backup_id = 0;
+  option_color_correction = 0;
 
   int id_language;
   sceUtilityGetSystemParamInt(PSP_SYSTEMPARAM_ID_INT_LANGUAGE, &id_language);
@@ -2348,10 +2249,7 @@ s32 load_dir_cfg(char *file_name)
       else
       {
         sprintf(str_buf, MSG[MSG_ERR_SET_DIR_0], current_variable);
-	    if (option_language == 0)
         print_string(str_buf, 7, str_line, COLOR15_WHITE, COLOR15_BLACK);
-		else
-        print_string_gbk(str_buf, 7, str_line, COLOR15_WHITE, COLOR15_BLACK);
         str_line += FONTHEIGHT;
 
         strcpy(dir_name, main_path);
@@ -2364,10 +2262,7 @@ s32 load_dir_cfg(char *file_name)
     if (dir_name[0] == 0)
     {
       sprintf(str_buf, MSG[MSG_ERR_SET_DIR_1], item_name);
-	  if (option_language == 0)
       print_string(str_buf, 7, str_line, COLOR15_WHITE, COLOR15_BLACK);
-	  else
-      print_string_gbk(str_buf, 7, str_line, COLOR15_WHITE, COLOR15_BLACK);
       str_line += FONTHEIGHT;
 
       strcpy(dir_name, main_path);
@@ -2415,10 +2310,7 @@ s32 load_dir_cfg(char *file_name)
       sprintf(str_buf, "%s\n\n%s", str_buf, MSG[MSG_ERR_CONT]);
 
       str_line += FONTHEIGHT;
-	  if (option_language == 0)
       print_string(str_buf, 7, str_line, COLOR15_WHITE, COLOR15_BLACK);
-	  else
-      print_string_gbk(str_buf, 7, str_line, COLOR15_WHITE, COLOR15_BLACK);
       error_msg("", CONFIRMATION_NONE);
     }
 
