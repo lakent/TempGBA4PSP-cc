@@ -28,7 +28,7 @@
  * only include 15bit compound values
  * and convert RGB565 video to 15bit when
  * using the lookup table */
-#define CC_LUT_SIZE       32768
+#define CC_LUT_SIZE       (32768 * 2)
 
 static uint16_t c_lut[CC_LUT_SIZE] = {0};
 
@@ -74,6 +74,10 @@ void init_lut(void)
       g_final = (unsigned)((g_correct * CC_RGB_MAX) + 0.5f) & 0x1F;
       b_final = (unsigned)((b_correct * CC_RGB_MAX) + 0.5f) & 0x1F;
       c_lut[color] = b_final << 10 | g_final << 5 | r_final;
+      if (color >= 0x8000)
+      {
+         c_lut[color] |= 0x8000;
+      }
    }
 }
 

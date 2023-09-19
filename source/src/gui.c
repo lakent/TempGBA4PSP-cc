@@ -22,7 +22,7 @@
 
 #define GPSP_CONFIG_FILENAME  "tempgba.cfg"
 #define GPSP_CONFIG_NUM       (17 + 16) // options + game pad config
-#define GPSP_GAME_CONFIG_NUM  (7 + 16)
+#define GPSP_GAME_CONFIG_NUM  (8 + 16)
 
 #define COLOR_BG            COLOR15( 3,  5,  8)
 #define COLOR_ROM_INFO      COLOR15(22, 18, 26)
@@ -863,7 +863,7 @@ u32 menu(void)
 
   char filename_buffer[MAX_PATH];
 
-  char line_buffer[80];
+  char line_buffer[256];
 
   char cheat_format_str[MAX_CHEATS][25*4];// gpsp kai 41*4
 
@@ -1972,6 +1972,7 @@ static s32 save_game_config_file(void)
     file_options[4] = option_frameskip_value;
     file_options[5] = option_clock_speed;
     file_options[6]  = option_sound_volume;
+    file_options[7]  = option_color_correction;
 
     for (i = 0; i < 16; i++)
     {
@@ -2079,6 +2080,7 @@ s32 load_game_config_file(void)
       option_frameskip_value = file_options[4];
       option_clock_speed     = file_options[5] % 4;
       option_sound_volume   = file_options[6] % 11;
+      option_color_correction = file_options[7] % 2;
 
       for (i = 0; i < 16; i++)
       {

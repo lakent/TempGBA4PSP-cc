@@ -196,7 +196,7 @@
     FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   共通",
 
     // MSG_OPTION_MENU_HELP_13
-    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   共通",
+    FONT_CURSOR_LEFT FONT_CURSOR_RIGHT ":選択   エミュレータ",
 
     // MSG_STATE_MENU_DATE_FMT_0
     "%4d/%2d/%2d %-4s %2d:%02d:%02d",

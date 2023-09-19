@@ -725,6 +725,19 @@ static void load_bios_file(void)
   }
 }
 
+static void load_gbk_plugin(void)
+{
+  char prx_path[MAX_PATH];
+  sprintf(prx_path, "%scp_fix_gbk.prx", main_path);
+
+  SceUID mod = kuKernelLoadModule(prx_path, 0, NULL);
+  if (mod >= 0)
+  {
+    int status;
+    sceKernelStartModule(mod, 0, 0, &status, NULL);
+  }
+}
+
 static void setup_main(void)
 {
   scePowerLock(0);
@@ -759,6 +772,7 @@ static void setup_main(void)
     enable_home_menu = 1;
 
   load_config_file();
+  load_gbk_plugin();
 
   setup_callbacks();
   sceImposeSetHomePopup(enable_home_menu ^ 1);

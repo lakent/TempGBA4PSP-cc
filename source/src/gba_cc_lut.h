@@ -3,7 +3,7 @@
 
 #include "common.h"
 
-#define CC_LUT_SIZE 0x8000
+#define CC_LUT_SIZE 0x10000
 extern const u16 gba_cc_lut[CC_LUT_SIZE];
 
 #endif /* __CC_LUT_H__ */

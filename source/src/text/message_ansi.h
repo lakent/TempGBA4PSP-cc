@@ -193,7 +193,7 @@
     "¡ð:Main menu",
 
     // MSG_OPTION_MENU_HELP_12
-    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
+    FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   all",
 
     // MSG_OPTION_MENU_HELP_13
     FONT_CURSOR_LEFT_GBK FONT_CURSOR_RIGHT_GBK ":Select   emulator",
